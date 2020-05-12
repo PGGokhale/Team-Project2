@@ -623,6 +623,8 @@ def creatplotdata(user_info):
             )
         temp = [float(i) for item in temp for i in item]
         perc_s = [i / j for i, j in zip(current_values, temp)]
+        deficit = [(j - i/100) for i,j in zip(current_values, temp)]
+        print(f"Micro Nutrients : {deficit}")
 
         trace1 = [{"x": y1_1, "y": perc_s, "text": y2, "type": "bar",}]
     if plot_type == "Macro Nutrients" or plot_type == "All":
@@ -650,13 +652,17 @@ def creatplotdata(user_info):
         temp = [float(item) for item in temp]
 
         perc_s = [i / j for i, j in zip(current_values, temp)]
+        deficit = [(j - i/100) for i,j in zip(current_values, temp)]
+        print(f"Macro Nutrients : {deficit}")
         trace2 = [{"x": y1_1, "y": perc_s, "text": y2, "type": "bar",}]
     if plot_type == "Calories" or plot_type == "All":
         data = userdata_nutrition_data["calories"]
         total = data["total"]
+        print(f"Calories : {total}")
         del data["total"]
         y1_1 = [item.capitalize() for item in data.keys()]
         current_values = [item for item in userdata_nutrition_data["calories"].values()]
+        
         y2 = ["Recommended: 10%–35%", "Recommended: 45%–65%", "Recommended: 20%–35%"]
         trace3 = [
             {
@@ -769,12 +775,13 @@ def returnAgekey(dob):
 
 
 def calcPhysicalMultiplier(PAL):
+    PAL = PAL.lower()
     switcher = {
         "Sedentary": 1.2,
-        "Lightly_active": 1.375,
-        "moderately_active": 1.55,
-        "very_active": 1.725,
-        "extra_active": 1.9,
+        "lightly active": 1.375,
+        "moderately active": 1.55,
+        "very active": 1.725,
+        "extra active": 1.9,
     }
     return switcher.get(PAL, 1.2)
 

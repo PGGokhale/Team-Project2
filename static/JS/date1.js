@@ -23,6 +23,12 @@ function getDate() {
     
     document.getElementById("inputdate").max = today;
 
+    if(document.getElementById("inputdate1").value ==''){
+        document.getElementById("inputdate1").value = today;
+    }
+    
+    document.getElementById("inputdate1").max = today;
+
   }
   
   

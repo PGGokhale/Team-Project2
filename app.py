@@ -60,7 +60,7 @@ app.secret_key = "1a2b3c4d5e"
 HOSTNAME = "127.0.0.1"
 PORT = 3306
 USERNAME = "root"
-PASSWORD = "password"
+PASSWORD = "uv9y9g5t"
 DIALECT = "mysql"
 DRIVER = "pymysql"
 DATABASE = "usda"
@@ -632,7 +632,8 @@ def analysis():
 
     # plot_type = request.args.get("selectnutrients")
     plot_type = "All"
-    desired_date = request.args.get("date")
+    desired_date = request.args.get("startdate")
+    end_date = request.args.get("enddate")
 
     if request.method == "GET" and desired_date:
 
